@@ -22,10 +22,10 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 17
-      - name: Build and release on curseforge
+      - name: Build and publish to Curseforge & Modrinth
         uses: eskatos/gradle-command-action@v1
         with:
-          arguments: curseforge --stacktrace
+          arguments: curseforge modrinth --stacktrace
         env:
           CURSE_API_KEY: ${{ secrets.CF_API_TOKEN }}
           CHANGELOG: ${{ steps.changelog_reader.outputs.changes }}

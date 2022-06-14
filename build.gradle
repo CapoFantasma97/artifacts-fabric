@@ -2,6 +2,7 @@ plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
     id 'io.github.juuxel.loom-quiltflower' version '1.7.2'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'com.modrinth.minotaur' version '2.3.1'
 }
 
 repositories {
@@ -159,5 +160,19 @@ curseforge {
 
     options {
         forgeGradleIntegration = false
+    }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "artifacts"
+    versionName = project.mod_version + " for Fabric " + project.minecraft_version
+    uploadFile = remapJar
+    changelog = System.getenv("CHANGELOG") ?: "https://github.com/florensie/artifacts-fabric/blob/master/CHANGELOG.md"
+
+    dependencies {
+        required.project "fabric-api"
+        required.project "cardinal-components-api"
+        required.project "cloth-config"
     }
 }
