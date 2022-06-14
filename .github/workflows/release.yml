@@ -28,6 +28,7 @@ jobs:
           arguments: curseforge modrinth --stacktrace
         env:
           CURSE_API_KEY: ${{ secrets.CF_API_TOKEN }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
           CHANGELOG: ${{ steps.changelog_reader.outputs.changes }}
       - name: Publish to Github releases
         uses: softprops/action-gh-release@v1
