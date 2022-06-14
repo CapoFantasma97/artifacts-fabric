@@ -13,7 +13,7 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
+import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -44,7 +44,7 @@ public class Artifacts implements ModInitializer {
 
 		// Loot table setup
 		ModLootConditions.register();
-		LootTableLoadingCallback.EVENT.register((rm, lt, id, supplier, s) ->
+		LootTableEvents.MODIFY.register((rm, lt, id, supplier, s) ->
 				ModLootTables.onLootTableLoad(id, supplier));
 
 		// Force loading init classes

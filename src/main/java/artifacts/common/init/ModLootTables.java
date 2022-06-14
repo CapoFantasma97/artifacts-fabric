@@ -1,9 +1,9 @@
 package artifacts.common.init;
 
 import artifacts.Artifacts;
-import net.fabricmc.fabric.api.loot.v1.FabricLootSupplierBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.storage.loot.LootPool;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootTableReference;
 
@@ -11,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ModLootTables {
-
-	public static final ResourceLocation CAMPSITE_CHEST = Artifacts.id("chests/campsite_chest");
 
 	public static final List<ResourceLocation> INJECT_TABLE_IDS = Arrays.asList(
 			new ResourceLocation("chests/village/village_armorer"),
@@ -44,7 +42,7 @@ public class ModLootTables {
 			new ResourceLocation("entities/cow")
 	);
 
-	public static void onLootTableLoad(ResourceLocation id, FabricLootSupplierBuilder supplier) {
+	public static void onLootTableLoad(ResourceLocation id, LootTable.Builder supplier) {
 		if (INJECT_TABLE_IDS.contains(id)) {
 			supplier.withPool(LootPool.lootPool().add(getInjectEntry(id.getPath())));
 		}

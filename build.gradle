@@ -1,6 +1,6 @@
 plugins {
     id 'fabric-loom' version '0.11-SNAPSHOT'
-    /*id 'io.github.juuxel.loom-quiltflower' version '1.7.1'*/ // FIXME: temporarily broken
+    id 'io.github.juuxel.loom-quiltflower' version '1.7.2'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
@@ -69,8 +69,8 @@ dependencies {
     modImplementation("dev.emi:trinkets:${project.trinkets_version}") {
         transitive = false
     }
-    modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${cca_version}")
-    modImplementation include("io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${cca_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cca_version}")
+    modImplementation include("dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${cca_version}")
     modImplementation include("be.florens:expandability-fabric:${project.expandability_version}")
     modImplementation "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
     modImplementation include("com.github.emilyploszaj:step-height-entity-attribute:${project.step_height_attr_version}") {
@@ -84,7 +84,7 @@ dependencies {
     modCompileOnly /*FIXME: modImplementation*/ "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
     // Compat & integration
-    modCompileOnly("com.github.apace100:origins-fabric:v${project.origins_version}") {
+    modCompileOnly("curse.maven:origins-391943:${project.origins_version}") {
         transitive = false
     }
     modCompileOnly("com.github.apace100:apoli:v${project.apoli_version}") {
@@ -136,7 +136,7 @@ curseforge {
             changelogType = "markdown"
             changelog = System.getenv("CHANGELOG") ?: "https://github.com/florensie/artifacts-fabric/blob/master/CHANGELOG.md"
 
-            addGameVersion "1.18.2"
+            addGameVersion "1.19"
             addGameVersion "Fabric"
             relations {
                 requiredDependency "fabric-api"
@@ -148,11 +148,11 @@ curseforge {
             }
 
             mainArtifact(remapJar.archiveFile) {
-                displayName = "${project.mod_version} for Minecraft 1.18.2"
+                displayName = "${project.mod_version} for Minecraft 1.19"
             }
 
             afterEvaluate {
-                uploadTask.dependsOn("build")
+                uploadTask.dependsOn(remapJar)
             }
         }
     }

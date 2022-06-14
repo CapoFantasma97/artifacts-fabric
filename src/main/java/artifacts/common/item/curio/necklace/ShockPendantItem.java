@@ -3,13 +3,12 @@ package artifacts.common.item.curio.necklace;
 import artifacts.common.init.ModItems;
 import artifacts.common.trinkets.TrinketsHelper;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
-
-import java.util.Random;
 
 public class ShockPendantItem extends PendantItem {
 
@@ -17,7 +16,7 @@ public class ShockPendantItem extends PendantItem {
 		super(ShockPendantItem::applyEffect);
 	}
 
-	private static void applyEffect(LivingEntity user, Entity attacker, Random random) {
+	private static void applyEffect(LivingEntity user, Entity attacker, RandomSource random) {
 		if (user != null && attacker != null && TrinketsHelper.isEquipped(ModItems.SHOCK_PENDANT, user)
 				&& attacker.level.canSeeSky(attacker.blockPosition()) && random.nextFloat() < 0.25f) {
 			LightningBolt lightning = EntityType.LIGHTNING_BOLT.create(attacker.level);

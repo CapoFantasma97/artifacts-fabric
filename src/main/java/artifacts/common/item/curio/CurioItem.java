@@ -14,7 +14,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -103,8 +102,8 @@ public class CurioItem extends ArtifactItem implements Trinket {
 	public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag flags) {
 		super.appendHoverText(stack, world, tooltip, flags);
 		getEffectsEnabledLanguageKey(stack).ifPresent(key -> {
-			MutableComponent enabled = new TranslatableComponent(key).withStyle(ChatFormatting.GOLD);
-			Component toggletooltip = new TranslatableComponent("artifacts.status.toggletooltip").withStyle(ChatFormatting.GRAY);
+			MutableComponent enabled = Component.translatable(key).withStyle(ChatFormatting.GOLD);
+			Component toggletooltip = Component.translatable("artifacts.status.toggletooltip").withStyle(ChatFormatting.GRAY);
 			tooltip.add(enabled.append(" ").append(toggletooltip));
 		});
 	}

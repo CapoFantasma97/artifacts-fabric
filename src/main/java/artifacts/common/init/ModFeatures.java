@@ -54,7 +54,7 @@ public class ModFeatures {
 				new ConfiguredFeature<>(CAMPSITE, FeatureConfiguration.NONE)
 		);
 		ResourceKey<ConfiguredFeature<?, ?>> featureKey = BuiltinRegistries.CONFIGURED_FEATURE.getResourceKey(configuredFeature).orElseThrow();
-		Holder<ConfiguredFeature<?, ?>> featureHolder = BuiltinRegistries.CONFIGURED_FEATURE.getOrCreateHolder(featureKey);
+		Holder<ConfiguredFeature<?, ?>> featureHolder = BuiltinRegistries.CONFIGURED_FEATURE.getHolderOrThrow(featureKey);
 
 		PLACED_CAMPSITE = Registry.register(
 				BuiltinRegistries.PLACED_FEATURE,

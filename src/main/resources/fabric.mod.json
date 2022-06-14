@@ -48,7 +48,7 @@
   "accessWidener": "artifacts.accesswidener",
 
   "depends": {
-    "minecraft": ">=1.17",
+    "minecraft": ">=1.19",
     "fabricloader": ">=0.7.4",
     "fabric": ">=0.39.0",
     "trinkets": ">=3.0.0",

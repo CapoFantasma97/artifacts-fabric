@@ -2,10 +2,9 @@ package artifacts.common.events;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-
-import java.util.Random;
 
 /**
  * Callback for applying Trinket effects when the wearer was attacked by another entity
@@ -21,5 +20,5 @@ public interface LivingEntityAttackedCallback {
 				}
 			});
 
-	void attack(LivingEntity entity, Entity attacker, Random random);
+	void attack(LivingEntity entity, Entity attacker, RandomSource random);
 }
