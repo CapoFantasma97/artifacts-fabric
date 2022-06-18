@@ -82,7 +82,7 @@ dependencies {
     modImplementation("com.terraformersmc:modmenu:${project.mod_menu_version}") {
         transitive = false
     }
-    modCompileOnly /*FIXME: modImplementation*/ "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
+    modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
     // Compat & integration
     modCompileOnly("curse.maven:origins-391943:${project.origins_version}") {

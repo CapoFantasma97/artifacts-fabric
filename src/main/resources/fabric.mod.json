@@ -38,7 +38,7 @@
     "cardinal-components": [
       "artifacts.common.init.ModComponents"
     ],
-    "rei_plugins": [
+    "rei_client": [
       "artifacts.client.integrations.REIPlugin"
     ]
   },
