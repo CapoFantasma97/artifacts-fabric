@@ -1,16 +1,13 @@
 package artifacts;
 
 import artifacts.common.compat.CompatHandler;
+import artifacts.common.config.ConfigHelper;
 import artifacts.common.config.ModConfig;
 import artifacts.common.init.ModFeatures;
 import artifacts.common.init.ModItems;
 import artifacts.common.init.ModLootConditions;
 import artifacts.common.init.ModLootTables;
 import artifacts.common.init.ModSoundEvents;
-import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigHolder;
-import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
-import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
@@ -40,7 +37,7 @@ public class Artifacts implements ModInitializer {
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void onInitialize() {
 		// Config
-		CONFIG = getConfigAndInvalidateOldVersions();
+		CONFIG = ConfigHelper.getConfigAndInvalidateOldVersions();
 
 		// Loot table setup
 		ModLootConditions.register();
@@ -55,23 +52,6 @@ public class Artifacts implements ModInitializer {
 
 		runCompatibilityHandlers();
 		LOGGER.info("Finished initialization");
-	}
-
-	/**
-	 * Gets the config and if the config version is incompatible, reset to the default config.
-	 * Note: this does not reset files for removed categories.
-	 */
-	private ModConfig getConfigAndInvalidateOldVersions() {
-		ConfigHolder<ModConfig> configHolder = AutoConfig.register(ModConfig.class,
-				PartitioningSerializer.wrap(Toml4jConfigSerializer::new));
-		int currentVersion = configHolder.getConfig().general.configVersion;
-		int requiredVersion = Artifacts.CONFIG_VERSION;
-		if (currentVersion != requiredVersion) {
-			LOGGER.warn("Resetting incompatible config with version {} to version {}", currentVersion, requiredVersion);
-			configHolder.resetToDefault();
-			configHolder.save();
-		}
-		return configHolder.getConfig();
 	}
 
 	private void runCompatibilityHandlers() {
