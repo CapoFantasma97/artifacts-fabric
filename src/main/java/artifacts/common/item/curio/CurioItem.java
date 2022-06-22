@@ -88,10 +88,13 @@ public class CurioItem extends ArtifactItem implements Trinket {
 
 	@Override
 	public final Multimap<Attribute, AttributeModifier> getModifiers(ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid) {
+		Multimap<Attribute, AttributeModifier> modifiers = Trinket.super.getModifiers(stack, slot, entity, uuid);
 		if (TrinketsHelper.areEffectsEnabled(stack)) {
-			return this.applyModifiers(stack, slot, entity, uuid);
+			Multimap<Attribute, AttributeModifier> artifactModifiers = this.applyModifiers(stack, slot, entity, uuid);
+			modifiers.putAll(artifactModifiers);
 		}
-		return HashMultimap.create();
+
+		return modifiers;
 	}
 
 	protected Multimap<Attribute, AttributeModifier> applyModifiers(ItemStack stack, SlotReference slot, LivingEntity entity, UUID uuid) {
