@@ -18,7 +18,7 @@ Steps to reproduce the behavior:
 4. See error
 
 **Game Environment**
-Please provide details about the game environment, either by crash report/logs or by detailing it below.
+Please provide details about the game environment, either by crash report/logs or by detailing it below. Please provide exact version numbers, "latest" is not enough.
  - Minecraft: [version]
  - Fabric API: [version]
  - Artifacts: [version]
