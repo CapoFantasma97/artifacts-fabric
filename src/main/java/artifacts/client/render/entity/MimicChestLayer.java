@@ -26,6 +26,8 @@ import java.util.List;
 
 public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
 
+    public static final ResourceLocation CHEST_ATLAS = new ResourceLocation("textures/atlas/chest.png");
+
     private final MimicChestLayerModel chestModel;
     public final Material vanillaChestMaterial;
     public final List<Material> chestMaterials;
@@ -45,6 +47,9 @@ public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
         if (!isChristmas && FabricLoader.getInstance().isModLoaded("lootr")) {
             ResourceLocation chestLocation = new ResourceLocation("lootr", "chest");
             chestMaterials.add(new Material(TextureAtlas.LOCATION_BLOCKS, chestLocation));
+        } else if (!isChristmas && FabricLoader.getInstance().isModLoaded("myloot")) {
+            ResourceLocation chestLocation = new ResourceLocation("myloot", "entity/chest/loot");
+            chestMaterials.add(new Material(CHEST_ATLAS, chestLocation));
         } else {
             if (!isChristmas && FabricLoader.getInstance().isModLoaded("quark")) {
                 List<String> chestTypes = Arrays.asList(
@@ -58,10 +63,9 @@ public class MimicChestLayer extends RenderLayer<MimicEntity, MimicModel> {
                         "crimson"
                 );
 
-                ResourceLocation atlas = new ResourceLocation("textures/atlas/chest.png");
                 for (String chestType : chestTypes) {
                     ResourceLocation chestLocation = new ResourceLocation("quark", String.format("model/chest/%s/normal", chestType));
-                    chestMaterials.add(new Material(atlas, chestLocation));
+                    chestMaterials.add(new Material(CHEST_ATLAS, chestLocation));
                 }
             }
 
