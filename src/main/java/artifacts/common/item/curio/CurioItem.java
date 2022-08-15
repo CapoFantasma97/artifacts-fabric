@@ -30,13 +30,14 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.Wearable;
 import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CurioItem extends ArtifactItem implements Trinket {
+public class CurioItem extends ArtifactItem implements Trinket, Wearable {
 
 	public CurioItem() {
 		// DispenserBlock.registerBehavior(this, TrinketItem.TRINKET_DISPENSER_BEHAVIOR); TODO: bug, missing in trinkets rewrite
