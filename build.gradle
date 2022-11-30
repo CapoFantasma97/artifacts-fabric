@@ -11,7 +11,7 @@ repositories {
     maven { url = "https://maven.shedaniel.me/" }
     maven { url = "https://ladysnake.jfrog.io/artifactory/mods" }
     maven {
-        url = "https://maven.florens.be"
+        url = "https://maven.florens.be/releases"
         content {
             includeGroup "be.florens"
         }
