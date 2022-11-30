@@ -28,7 +28,7 @@
     "preLaunch": [
       "artifacts.ArtifactsPreLaunch"
     ],
-    "artifacts-compathandlers": [
+    "artifacts:compat_handlers": [
       "artifacts.common.compat.HaemaCompat",
       "artifacts.common.compat.OriginsCompat"
     ],
